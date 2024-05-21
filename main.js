@@ -4,6 +4,11 @@ Vue.createApp({
       cart: 0,
     };
   },
+  computed: {
+    productCounter() {
+      return this.cart;
+    },
+  },
   methods: {
     addToCart() {
       this.cart++;
