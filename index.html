@@ -64,24 +64,26 @@
         </section>
         <section id="cart">
           <h2>Shopping Cart ({{ productCounter }})</h2>
-          <div class="cart-item">
-            <img src="https://via.placeholder.com/100" alt="Product 1" />
-            <div class="cart-details">
-              <h3>Product 1</h3>
-              <p>$100</p>
-              <button>Remove</button>
+          <template v-if="productCounter !== 0">
+            <div class="cart-item">
+              <img src="https://via.placeholder.com/100" alt="Product 1" />
+              <div class="cart-details">
+                <h3>Product 1</h3>
+                <p>$100</p>
+                <button @click="deleteToCart">Eliminar</button>
+              </div>
             </div>
-          </div>
-          <div class="cart-item">
-            <img src="https://via.placeholder.com/100" alt="Product 2" />
-            <div class="cart-details">
-              <h3>Product 2</h3>
-              <p>$200</p>
-              <button>Remove</button>
+            <div class="cart-item">
+              <img src="https://via.placeholder.com/100" alt="Product 2" />
+              <div class="cart-details">
+                <h3>Product 2</h3>
+                <p>$200</p>
+                <button @click="deleteToCart">Eliminar</button>
+              </div>
             </div>
-          </div>
-          <div>
-            <p>Your cart is empty</p>
+          </template>
+          <div v-else>
+            <p>El carrito está vacío</p>
           </div>
           <button>Checkout</button>
         </section>
