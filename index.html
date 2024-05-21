@@ -30,6 +30,17 @@
               <h3>{{ item.title }}</h3>
               <p>{{ item.description }}</p>
               <p>${{ item.price }}</p>
+
+              <p
+                class="rating"
+                :class="{ 
+                  'rating-red': item.rating.rate < 3, 
+                  'rating-green': item.rating.rate >= 3 
+                }"
+              >
+                {{ item.rating.rate }} puntos
+                <span>({{ item.rating.count }} votos)</span>
+              </p>
               <button @click="addToCart(item)">Agregar al carrito</button>
               <div style="margin-top: 5px">
                 <a href="#">Ver detalles</a>

@@ -123,6 +123,23 @@ button:hover {
   background-color: #e74c3c;
 }
 
+.rating {
+  font-weight: bold;
+}
+
+.rating span {
+  color: #b5b5b5;
+  font-size: 13px;
+}
+
+.rating-red {
+  color: red;
+}
+
+.rating-green {
+  color: green;
+}
+
 /* Estilos para pantallas pequeñas */
 @media screen and (max-width: 768px) {
   header {
