@@ -1,6 +1,7 @@
 Vue.createApp({
   data() {
     return {
+      searchQuery: "",
       cart: [],
       listProducts: [
         {
@@ -135,6 +136,15 @@ Vue.createApp({
   computed: {
     productCounter() {
       return this.cart.length;
+    },
+    filteredProducts() {
+      // Filtramos los productos en función del valor de búsqueda
+      if (!this.searchQuery) {
+        return this.listProducts;
+      }
+      return this.listProducts.filter((product) =>
+        product.title.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
     },
   },
   methods: {

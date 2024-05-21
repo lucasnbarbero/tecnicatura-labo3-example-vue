@@ -11,18 +11,23 @@
   <body>
     <div id="app">
       <header>
-        <h1>Marketplace</h1>
-        <nav>
-          <a href="#">Home</a>
-          <a href="#">Carrito</a>
-        </nav>
+        <div>
+          <h1>Marketplace</h1>
+          <nav>
+            <a href="#">Home</a>
+            <a href="#">Carrito</a>
+          </nav>
+        </div>
+        <div>
+          <input type="text" v-model="searchQuery" />
+        </div>
       </header>
       <main id="main-content">
         <section id="product-list">
           <h2>Lista de productos</h2>
           <div
             class="product"
-            v-for="(item, index) in listProducts"
+            v-for="(item, index) in filteredProducts"
             :key="item.id"
           >
             <img :src="item.image" :alt="item.title" />
