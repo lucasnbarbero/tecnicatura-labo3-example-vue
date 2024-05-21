@@ -1,4 +1,54 @@
-Vue.createApp({
+import ProductItem from "./components/ProductItem.js";
+import CartProductItem from "./components/CartProductItem.js";
+
+export default {
+  components: {
+    ProductItem,
+    CartProductItem,
+  },
+  template: `
+    <header>
+      <div>
+        <h1>Marketplace</h1>
+        <nav>
+          <a href="#">Home</a>
+          <a href="#">Carrito</a>
+        </nav>
+      </div>
+      <div>
+        <input type="text" v-model="searchQuery" />
+      </div>
+    </header>
+    <main id="main-content">
+      <section id="product-list">
+        <h2>Lista de productos</h2>
+        <product-item
+          v-for="(item, index) in filteredProducts"
+          :key="item.id"
+          :product="item"
+          @handle-click="addToCart(item)"
+        ></product-item>
+      </section>
+      <section id="cart">
+        <h2>Shopping Cart ({{ productCounter }})</h2>
+        <template v-if="productCounter !== 0">
+          <cart-product-item
+            v-for="(item, index) in cart"
+            :key="index"
+            :product="item"
+            @decrement="decrementProduct(item)"
+            @increment="incrementProduct(item)"
+            @delete="deleteToCart(index)"
+          >
+          </cart-product-item>
+        </template>
+        <div v-else>
+          <p>El carrito está vacío</p>
+        </div>
+        <button>Checkout</button>
+      </section>
+    </main>
+  `,
   data() {
     return {
       searchQuery: "",
@@ -178,4 +228,4 @@ Vue.createApp({
       }
     },
   },
-}).mount("#app");
+};

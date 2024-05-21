@@ -9,73 +9,8 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <div id="app">
-      <header>
-        <div>
-          <h1>Marketplace</h1>
-          <nav>
-            <a href="#">Home</a>
-            <a href="#">Carrito</a>
-          </nav>
-        </div>
-        <div>
-          <input type="text" v-model="searchQuery" />
-        </div>
-      </header>
-      <main id="main-content">
-        <section id="product-list">
-          <h2>Lista de productos</h2>
-          <div
-            class="product"
-            v-for="(item, index) in filteredProducts"
-            :key="item.id"
-          >
-            <img :src="item.image" :alt="item.title" />
-            <div class="product-details">
-              <h3>{{ item.title }}</h3>
-              <p>{{ item.description }}</p>
-              <p>${{ item.price }}</p>
+    <div id="app"></div>
 
-              <p
-                class="rating"
-                :class="{ 
-                  'rating-red': item.rating.rate < 3, 
-                  'rating-green': item.rating.rate >= 3 
-                }"
-              >
-                {{ item.rating.rate }} puntos
-                <span>({{ item.rating.count }} votos)</span>
-              </p>
-              <button @click="addToCart(item)">Agregar al carrito</button>
-              <div style="margin-top: 5px">
-                <a href="#">Ver detalles</a>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section id="cart">
-          <h2>Shopping Cart ({{ productCounter }})</h2>
-          <template v-if="productCounter !== 0">
-            <div class="cart-item" v-for="(item, index) in cart" :key="index">
-              <img :src="item.image" :alt="item.title" />
-              <div class="cart-details">
-                <h3>{{ item.title }}</h3>
-                <p>${{ item.price }}</p>
-                <p>Cantidad: {{ item.quantity }}</p>
-                <button @click="decrementProduct(item)">-1</button>
-                <button @click="incrementProduct(item)">+1</button>
-                <button @click="deleteToCart(index)">Eliminar</button>
-              </div>
-            </div>
-          </template>
-          <div v-else>
-            <p>El carrito está vacío</p>
-          </div>
-          <button>Checkout</button>
-        </section>
-      </main>
-    </div>
-
-    <script src="main.js"></script>
+    <script type="module" src="src/main.js"></script>
   </body>
 </html>
