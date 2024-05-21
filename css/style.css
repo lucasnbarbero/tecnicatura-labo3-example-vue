@@ -54,8 +54,7 @@ main {
 }
 
 .product img {
-  width: 100px;
-  height: 100px;
+  width: 200px;
   object-fit: cover;
 }
 
@@ -85,7 +84,7 @@ button:hover {
 }
 
 #cart {
-  flex-basis: 300px;
+  flex-basis: 800px;
   background-color: #fff;
   border-radius: 5px;
   padding: 10px;
