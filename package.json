@@ -1,0 +1,19 @@
+{
+  "name": "tecnicatura-labo3-example-vue",
+  "version": "1.0.0",
+  "description": "Este repositorio contiene el proyecto de un marketplace que vamos a desarrollar paso a paso utilizando Vue.js. En este proyecto, aplicaremos los conceptos que vamos aprendiendo, desde las bases de Vue.js hasta el enrutamiento, la gestión del estado y consumir una API.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^3.4.27"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "vite": "^5.2.11"
+  }
+}
