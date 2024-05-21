@@ -20,42 +20,17 @@
       <main id="main-content">
         <section id="product-list">
           <h2>Lista de productos</h2>
-          <div class="product">
-            <img
-              src="https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"
-              alt="Product 1"
-            />
+          <div
+            class="product"
+            v-for="(item, index) in listProducts"
+            :key="item.id"
+          >
+            <img :src="item.image" :alt="item.title" />
             <div class="product-details">
-              <h3>Mens Cotton Jacket</h3>
-              <p>
-                Great outerwear jackets for Spring/Autumn/Winter, suitable for
-                many occasions, such as working, hiking, camping, mountain/rock
-                climbing, cycling, traveling or other outdoors. Good gift choice
-                for you or your family member. A warm hearted love to Father,
-                husband or son in this thanksgiving or Christmas Day.
-              </p>
-              <p>$619</p>
-              <button @click="addToCart">Agregar al carrito</button>
-              <div style="margin-top: 5px">
-                <a href="#">Ver detalles</a>
-              </div>
-            </div>
-          </div>
-          <div class="product">
-            <img
-              src="https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg"
-              alt="Product 2"
-            />
-            <div class="product-details">
-              <h3>Mens Casual Slim Fit</h3>
-              <p>
-                He color could be slightly different between on the screen and
-                in practice. / Please note that body builds vary by person,
-                therefore, detailed size information should be reviewed below on
-                the product description.
-              </p>
-              <p>$200</p>
-              <button @click="addToCart">Agregar al carrito</button>
+              <h3>{{ item.title }}</h3>
+              <p>{{ item.description }}</p>
+              <p>${{ item.price }}</p>
+              <button @click="addToCart(item)">Agregar al carrito</button>
               <div style="margin-top: 5px">
                 <a href="#">Ver detalles</a>
               </div>
@@ -65,20 +40,15 @@
         <section id="cart">
           <h2>Shopping Cart ({{ productCounter }})</h2>
           <template v-if="productCounter !== 0">
-            <div class="cart-item">
-              <img src="https://via.placeholder.com/100" alt="Product 1" />
+            <div class="cart-item" v-for="(item, index) in cart" :key="index">
+              <img :src="item.image" :alt="item.title" />
               <div class="cart-details">
-                <h3>Product 1</h3>
-                <p>$100</p>
-                <button @click="deleteToCart">Eliminar</button>
-              </div>
-            </div>
-            <div class="cart-item">
-              <img src="https://via.placeholder.com/100" alt="Product 2" />
-              <div class="cart-details">
-                <h3>Product 2</h3>
-                <p>$200</p>
-                <button @click="deleteToCart">Eliminar</button>
+                <h3>{{ item.title }}</h3>
+                <p>${{ item.price }}</p>
+                <p>Cantidad: {{ item.quantity }}</p>
+                <button @click="decrementProduct(item)">-1</button>
+                <button @click="incrementProduct(item)">+1</button>
+                <button @click="deleteToCart(index)">Eliminar</button>
               </div>
             </div>
           </template>
